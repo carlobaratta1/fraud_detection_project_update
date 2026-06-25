@@ -46,7 +46,7 @@ def load_files():
 model, preprocessor, device = load_files()
 
 # 3. Interfaccia Grafica 
-st.title("Fraud Detection Prediction App")
+st.title("Fraud Detection Prediction App (model Deep Learning)")
 st.markdown("Please enter the transaction details and use the predict button.")
 st.divider()
 
@@ -87,6 +87,6 @@ if st.button("Predict"):
     fraud_percentage = prob * 100
     
     if prob >= 0.4:
-        st.error(f"⚠️ This transaction can be fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**")
+        st.error(f"This transaction can be fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**")
     else:
-        st.success(f"✅ This transaction looks like it is not a fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**")
+        st.success(f"This transaction looks like it is not a fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**")

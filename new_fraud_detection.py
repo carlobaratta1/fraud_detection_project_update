@@ -7,7 +7,7 @@ import joblib
 model = joblib.load('fraud_detection_pipeline.pickle')
 
 # Creazione GUI
-st.title('Fraud Detection Prediction App')
+st.title('Fraud Detection Prediction App (model Traditional ML)')
 st.markdown('Inserisci i dettagli della transazione e clicca su Predict')
 st.divider()
 
@@ -39,6 +39,6 @@ if st.button('Predict'):
     st.divider()
     st.subheader('Fraud Prediction:')
     if prediction == 1:
-        st.error(f'⚠️ This transaction can be fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**')
+        st.error(f'This transaction can be fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**')
     else:
-        st.success(f'✅ This transaction looks like it is not a fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**')
+        st.success(f'This transaction looks like it is not a fraud\n\n**Fraud Probability: {fraud_percentage:.2f}%**')
