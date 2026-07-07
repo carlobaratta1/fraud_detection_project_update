@@ -68,7 +68,12 @@ if st.button("Predict"):
         'oldbalanceDest': oldbalanceDest,
         'newbalanceDest': newbalanceDest
     }])
+
+    input_data['errorBalanceOrig'] = input_data['oldbalanceOrg'] - input_data['amount'] - input_data['newbalanceOrig']
+    input_data['errorBalanceDest'] = input_data['oldbalanceDest'] + input_data['amount'] - input_data['newbalanceDest']
     
+    input_processed = preprocessor.transform(input_data)
+
     # Trasformiamo i dati con scikit-learn
     input_processed = preprocessor.transform(input_data)
     if hasattr(input_processed, 'toarray'):

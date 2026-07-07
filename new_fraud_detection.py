@@ -3,7 +3,6 @@ import pandas as pd
 import joblib
 
 # Caricamento del modello
-# Assicurati che il file .pickle sia nella stessa cartella!
 model = joblib.load('fraud_detection_pipeline.pickle')
 
 # Creazione GUI
@@ -30,8 +29,11 @@ if st.button('Predict'):
         'oldbalanceDest': old_balance_destination,
         'newbalanceDest': new_balance_destination
     }])
+    #aggiunta variabili di errore
+    input_data['errorBalanceOrig'] = input_data['oldbalanceOrg'] - input_data['amount'] - input_data['newbalanceOrig']
+    input_data['errorBalanceDest'] = input_data['oldbalanceDest'] + input_data['amount'] - input_data['newbalanceDest']
 
- # Probabilità di frode
+    # Probabilità di frode
     prob = model.predict_proba(input_data)[0][1]
     fraud_percentage = prob * 100
     prediction = int(prob >= 0.4)
